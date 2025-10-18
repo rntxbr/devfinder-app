@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Dev Finder</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="logo">DevFinder</h1>
+
+      <div class="header-search">
+        <div class="input-wrapper-header">
+          <div class="input-header">
+            <div class="glow left"></div>
+            <div class="glow right"></div>
+
+            <input
+              type="text"
+              id="searchInput"
+              name="text"
+              placeholder="Search GitHub username..."
+            />
+
+            <div class="reflection"></div>
+
+            <div class="icon-header">
+              <svg
+                stroke="#fff"
+                viewBox="0 0 38 38"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+                class="loading"
+              >
+                <g fill-rule="evenodd" fill="none">
+                  <g stroke-width="3" transform="translate(1 1)">
+                    <circle r="18" cy="18" cx="18" stroke-opacity=".2"></circle>
+                    <path d="M36 18c0-9.94-8.06-18-18-18"></path>
+                  </g>
+                </g>
+              </svg>
+              <svg
+                viewBox="0 0 490.4 490.4"
+                version="1.1"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="magnifier"
+              >
+                <path
+                  d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796   s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z    M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="glow-outline"></div>
+          <div class="glow-layer-bg"></div>
+          <div class="glow-layer-1"></div>
+          <div class="glow-layer-2"></div>
+          <div class="glow-layer-3"></div>
+          <div class="glow left"></div>
+          <div class="glow right"></div>
+        </div>
+      </div>
+
+      <button class="about-btn" id="aboutBtn">About</button>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+      <div class="bg"></div>
+      <div class="help-text" id="helpText">
+        <p>
+          Search for information about a GitHub user (e.g., torvalds, gaearon,
+          kentcdodds)
+        </p>
+      </div>
+    </div>
+
+    <div class="user-result-container" id="userResultContainer">
+      <div id="errorMessage" class="error-message"></div>
+      <div id="userCard" class="user-card-main"></div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal-overlay" id="aboutModal">
+      <div class="modal-content">
+        <button class="modal-close" id="closeModal">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <h2>About This Project</h2>
+        <div class="modal-body">
+          <p>
+            Hello! My name is <strong>Renato Khael</strong>, and I created this
+            app to test the GitHub public API and explore everything we can do
+            with it.
+          </p>
+          <p>
+            This project demonstrates how to fetch and display user information,
+            repositories, and statistics from GitHub in an elegant and
+            interactive way.
+          </p>
+          <div class="modal-contact">
+            <p>Feel free to connect with me:</p>
+            <a
+              href="https://www.linkedin.com/in/rkhael/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="linkedin-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>
+        Developed by
+        <a
+          href="https://www.linkedin.com/in/rkhael/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Renato Khael</a
+        >
+      </p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
