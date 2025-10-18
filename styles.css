@@ -1762,14 +1762,13 @@ body::before {
   padding: 40px;
   max-width: 550px;
   width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
   position: relative;
   box-shadow: 0 25px 80px rgba(132, 34, 177, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 0 100px rgba(88, 78, 196, 0.3);
   transform: scale(0.8) translateY(30px);
   opacity: 0;
   transition: all 0.4s var(--ease-bounce);
+  overflow: visible;
 }
 
 .modal-content::before {
@@ -1815,7 +1814,6 @@ body::before {
   cursor: pointer;
   transition: all var(--transition-normal) var(--ease-bounce);
   color: var(--color-text-primary);
-  position: relative;
   overflow: hidden;
 }
 
@@ -2203,8 +2201,19 @@ body::before {
     height: 50px;
   }
 
+  .modal-content {
+    padding: 25px 15px;
+  }
+
   .modal-content h2 {
     font-size: 20px;
+  }
+
+  .modal-close {
+    width: 35px;
+    height: 35px;
+    top: 12px;
+    right: 12px;
   }
 }
 
