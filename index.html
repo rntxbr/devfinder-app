@@ -3,30 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DevFinder — search GitHub users and explore profiles, stats, and popular repositories in a beautiful dark UI."
+    />
+    <meta name="theme-color" content="#1b0a2e" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="DevFinder — GitHub User Search" />
+    <meta
+      property="og:description"
+      content="Search GitHub users and explore profiles, stats, and popular repositories."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="DevFinder" />
+    <meta
+      name="twitter:description"
+      content="Search GitHub users and explore profiles, stats, and popular repositories."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%238422b1'/%3E%3Cstop offset='100%25' stop-color='%230d00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='46' fill='%23000' stroke='url(%23g)' stroke-width='6'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='42' font-family='system-ui,sans-serif' font-weight='800' fill='url(%23g)'%3ED%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Dev Finder</title>
+    <title>DevFinder — GitHub User Search</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZ55BQ2Z1X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NZ55BQ2Z1X');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9872643901299918"
+     crossorigin="anonymous"></script>
   </head>
   <body>
+    <a class="skip-link" href="#searchInput">Skip to search</a>
+
+    <!-- Screen reader live region -->
+    <div
+      id="statusLive"
+      class="sr-only"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
     <!-- Header -->
     <header class="app-header">
-      <h1 class="logo">DevFinder</h1>
+      <h1
+        class="logo"
+        tabindex="0"
+        role="button"
+        aria-label="DevFinder — go to home"
+        title="Go to home"
+      >
+        DevFinder
+      </h1>
 
       <div class="header-search">
+        <label for="searchInput" class="sr-only">Search GitHub username</label>
         <div class="input-wrapper-header">
           <div class="input-header">
-            <div class="glow left"></div>
-            <div class="glow right"></div>
+            <div class="glow left" aria-hidden="true"></div>
+            <div class="glow right" aria-hidden="true"></div>
 
             <input
-              type="text"
+              type="search"
               id="searchInput"
-              name="text"
-              placeholder="Search GitHub username..."
+              name="search"
+              placeholder="Search GitHub username…"
+              autocomplete="off"
+              spellcheck="false"
+              autocapitalize="off"
+              enterkeyhint="search"
+              aria-describedby="searchHint"
+              maxlength="39"
             />
 
-            <div class="reflection"></div>
+            <div class="reflection" aria-hidden="true"></div>
 
-            <div class="icon-header">
+            <button
+              type="button"
+              class="clear-search-btn"
+              id="clearSearchBtn"
+              aria-label="Clear search"
+              hidden
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
+            <div class="icon-header" aria-hidden="true">
               <svg
                 stroke="#fff"
                 viewBox="0 0 38 38"
@@ -57,49 +136,129 @@
               </svg>
             </div>
           </div>
-          <div class="glow-outline"></div>
-          <div class="glow-layer-bg"></div>
-          <div class="glow-layer-1"></div>
-          <div class="glow-layer-2"></div>
-          <div class="glow-layer-3"></div>
-          <div class="glow left"></div>
-          <div class="glow right"></div>
+          <div class="glow-outline" aria-hidden="true"></div>
+          <div class="glow-layer-bg" aria-hidden="true"></div>
+          <div class="glow-layer-1" aria-hidden="true"></div>
+          <div class="glow-layer-2" aria-hidden="true"></div>
+          <div class="glow-layer-3" aria-hidden="true"></div>
+          <div class="glow left" aria-hidden="true"></div>
+          <div class="glow right" aria-hidden="true"></div>
         </div>
+        <span id="searchHint" class="sr-only">
+          Type a GitHub username and wait, or press Enter to search.
+        </span>
       </div>
 
-      <button class="about-btn" id="aboutBtn">About</button>
+      <button
+        class="about-btn"
+        id="aboutBtn"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="aboutModal"
+        aria-expanded="false"
+      >
+        About
+      </button>
     </header>
 
-    <!-- Main Container -->
-    <div class="container" id="mainContainer">
-      <div class="bg"></div>
-      <div class="help-text" id="helpText">
-        <svg
-          class="github-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-          />
-        </svg>
-        <p>
-          Search for information about a GitHub user (e.g., torvalds, gaearon,
-          kentcdodds)
-        </p>
-      </div>
-    </div>
+    <!-- Main -->
+    <main class="container" id="mainContainer">
+      <div class="bg" aria-hidden="true"></div>
 
-    <div class="user-result-container" id="userResultContainer">
+      <div class="home-panel" id="homePanel">
+        <div class="help-text" id="helpText">
+          <svg
+            class="github-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+          <h2 class="help-title">Discover GitHub developers</h2>
+          <p>
+            Search for a username to view profile stats, stars, and popular
+            repositories.
+          </p>
+          <div
+            class="example-chips"
+            id="exampleChips"
+            aria-label="Example usernames"
+          >
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <section
+          class="ranking-container"
+          id="rankingContainer"
+          aria-labelledby="rankingTitle"
+          hidden
+        >
+          <h2 class="ranking-title" id="rankingTitle">Recent Profiles</h2>
+          <p class="ranking-subtitle">
+            Ranked by activity score · click to open
+          </p>
+          <div class="ranking-list" id="rankingList" role="list">
+            <!-- Ranking items rendered by JS -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- User result overlay -->
+    <div
+      class="user-result-container"
+      id="userResultContainer"
+      aria-hidden="true"
+      role="region"
+      aria-label="Search results"
+    >
+      <button
+        type="button"
+        class="close-result-btn"
+        id="closeResultBtn"
+        aria-label="Close results and go back"
+        hidden
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back</span>
+      </button>
       <div id="errorMessage" class="error-message"></div>
-      <div id="userCard" class="user-card-main"></div>
+      <div id="userCard" class="user-card-main" tabindex="-1"></div>
     </div>
 
     <!-- About Modal -->
-    <div class="modal-overlay" id="aboutModal">
+    <div
+      class="modal-overlay"
+      id="aboutModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="aboutModalTitle"
+      aria-hidden="true"
+    >
       <div class="modal-content">
-        <button class="modal-close" id="closeModal">
+        <button
+          class="modal-close"
+          id="closeModal"
+          type="button"
+          aria-label="Close about dialog"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -108,23 +267,30 @@
             fill="none"
             stroke="currentColor"
             stroke-width="2"
+            aria-hidden="true"
           >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <h2>About This Project</h2>
+        <h2 id="aboutModalTitle">About This Project</h2>
         <div class="modal-body">
           <p>
             Hello! My name is <strong>Renato Khael</strong>, and I created this
-            app to test the GitHub public API and explore everything we can do
-            with it.
+            app to explore the GitHub public API and showcase developer profiles
+            in an elegant interface.
           </p>
           <p>
-            This project demonstrates how to fetch and display user information,
-            repositories, and statistics from GitHub in an elegant and
-            interactive way.
+            DevFinder fetches user information, repositories, and statistics
+            from GitHub — with local caching, keyboard shortcuts, and a fully
+            responsive dark UI.
           </p>
+          <ul class="modal-features">
+            <li>Live username search with debounce</li>
+            <li>Profile stats, stars &amp; top repositories</li>
+            <li>Local cache &amp; recent profiles ranking</li>
+            <li>Accessible keyboard navigation</li>
+          </ul>
           <div class="modal-contact">
             <p>Feel free to connect with me:</p>
             <a
@@ -139,6 +305,7 @@
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
+                aria-hidden="true"
               >
                 <path
                   d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
@@ -161,9 +328,16 @@
           rel="noopener noreferrer"
           >Renato Khael</a
         >
+        · Data from
+        <a
+          href="https://docs.github.com/en/rest"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub API</a
+        >
       </p>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
   </body>
 </html>
